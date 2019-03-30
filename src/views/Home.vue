@@ -17,18 +17,20 @@
             </el-menu>
         </div>
         <div class="content">
-            <el-menu
-                    class="menu-left"
-                    @select="leftMenuItemSelect"
-                    :default-active="activeLeft"
-                    background-color="#545c64"
-                    text-color="#fff"
-                    active-text-color="#ffd04b">
-                <nav-item
-                        v-for="(item, index) of configData.content"
-                        :key="index + 'nav2'"
-                        :nav-data="item"></nav-item>
-            </el-menu>
+            <div class="menu-left-container">
+                <el-menu
+                        class="menu-left"
+                        @select="leftMenuItemSelect"
+                        :default-active="activeLeft"
+                        background-color="#545c64"
+                        text-color="#fff"
+                        active-text-color="#ffd04b">
+                    <nav-item
+                            v-for="(item, index) of configData.content"
+                            :key="index + 'nav2'"
+                            :nav-data="item"></nav-item>
+                </el-menu>
+            </div>
             <router-view/>
         </div>
         <div class="footer">
@@ -75,11 +77,9 @@ export default {
 
 <style lang="scss">
     .container{
-        display: flex;
-        flex-direction: column;
-        height: 100%;
+        height: calc(100% + 50px);
+        overflow: hidden;
         .header{
-            height: 200px;
             .menu-top{
                 flex-grow: 0;
                 height: auto;
@@ -101,12 +101,19 @@ export default {
             }
         }
         .content{
-            margin: 24px 0;
-            min-height: calc(100% - 298px);
-            .menu-left{
+            margin: 16px 0;
+            height: calc(100% - 282px);
+            .menu-left-container{
                 height: 100%;
+                overflow-y: auto;
+                overflow-x: hidden;
                 width: 300px;
+                .menu-left{
+                    height: 100%;
+                    width: 100%;
+                }
             }
+
         }
         .footer{
             background: #2d75b6;
