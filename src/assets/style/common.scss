@@ -1,0 +1,251 @@
+@import "variables-defined";
+@import "../../../node_modules/element-ui/packages/theme-chalk/src/common/var";
+
+
+$divider-default: 1px solid #ddd;
+$divider-default1: 1px solid #DCDFE6;
+$divider-default2: 1px solid #e4e7ed;
+$divider-default3: 1px solid #ebeef5;
+$divider-default4: 1px solid #f2f6fc;
+
+$box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+
+$color-success: #67c23a;
+$color-warning: #e6a23c;
+$color-danger: #f56c6c;
+$color-info: #909399;
+
+// 辅助颜色
+$color-common-gray: '#999';
+$color-light-gray: #e4e7ed;
+$color-dark-gray: #c0c4cc;
+
+// 背景颜色
+$color-bg-primary: #f0f2f5;
+$color-bg-secondary: #f5f7fa;
+$color-bg-common: #e4e7ed;
+
+@mixin scroll($bg: #f6f6f6, $thumb: #999, $btn: #999) {
+  scrollbar-3dlight-color: $bg;
+  scrollbar-highlight-color: $bg;
+  scrollbar-face-color: $thumb;
+  scrollbar-arrow-color: $btn;
+  scrollbar-shadow-color: $thumb;
+  scrollbar-dark-shadow-color: $thumb;
+  scrollbar-base-color: $bg;
+  scrollbar-track-color: $bg;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+    background: transparent;
+  }
+  &::-webkit-scrollbar-button {
+    background-color: $btn;
+    display: none;
+  }
+  &::-webkit-scrollbar-track {
+    background: $bg;
+  }
+  &::-webkit-scrollbar-track-piece {
+    background: $bg;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: $thumb;
+    border-radius: 10px;
+  }
+  &::-webkit-scrollbar-corner {
+    background: $bg;
+  }
+  &::-webkit-resizer {
+    background: $bg;
+  }
+}
+
+@mixin placeholder($color: #ccc) {
+  &::-moz-placeholder {
+    color: $color;
+    opacity: 1;
+  }
+  &:-ms-input-placeholder {
+    color: $color;
+  }
+  &::-webkit-input-placeholder {
+    color: $color;
+  }
+}
+
+@mixin gradients($angle: to right, $color-1: #fff, $color-2: #fff) {
+  background: linear-gradient($angle, $color-1, $color-2);
+}
+
+@mixin gradients-font($angle: to right, $color-1: #fff, $color-2: #fff) {
+  @include gradients($angle, $color-1, $color-2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@mixin gradients-blue($angle: to right) {
+  @include gradients($angle, #5aa3e4, #5677fc);
+}
+
+@mixin gradients-red($angle: to right) {
+  @include gradients($angle, #e87767, #f2a984);
+}
+
+@mixin gradients-purple($angle: to right) {
+  @include gradients($angle, #738ae6, #845ce6);
+}
+
+@mixin gradients-green($angle: to right) {
+  @include gradients($angle, #5aa3e4, #73d8c5);
+}
+
+@mixin gradients-font-blue($angle: to right) {
+  @include gradients-font($angle, #5aa3e4, #5677fc);
+}
+
+@mixin gradients-font-red($angle: to right) {
+  @include gradients-font($angle, #e87767, #f2a984);
+}
+
+@mixin gradients-font-purple($angle: to right) {
+  @include gradients-font($angle, #738ae6, #845ce6);
+}
+
+@mixin gradients-font-green($angle: to right) {
+  @include gradients-font($angle, #5aa3e4, #73d8c5);
+}
+
+@mixin button-large() {
+  height: 48px;
+  font-size: 18px;
+}
+
+@mixin h-h1 {
+  font-size: 46px;
+  line-height: 54px;
+}
+
+@mixin h-h2 {
+  font-size: 36px;
+  line-height: 44px;
+}
+
+@mixin h-h3 {
+  font-size: 28px;
+  line-height: 36px;
+}
+
+@mixin h-h4 {
+  font-size: 22px;
+  line-height: 30px;
+}
+
+@mixin h-h5 {
+  font-size: 18px;
+  line-height: 26px;
+}
+
+@mixin h-h6 {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+@mixin h-body {
+  font-size: 14px;
+  line-height: 22px;
+}
+
+@mixin h-caption {
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.h-h1 {
+  @include h-h1
+}
+
+.h-h2 {
+  @include h-h2
+}
+
+.h-h3 {
+  @include h-h3
+}
+
+.h-h4 {
+  @include h-h4
+}
+
+.h-h5 {
+  @include h-h5
+}
+
+.h-h6 {
+  @include h-h6
+}
+
+.h-body {
+  @include h-body;
+  color: $--color-text-secondary
+}
+
+.text-primary {
+  color: $--color-text-primary
+}
+
+.text-secondary {
+  color: $--color-text-secondary
+}
+
+.text-regular {
+  color: $--color-text-regular
+}
+
+.line-hidden {
+  word-break: keep-all;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block
+}
+
+
+@mixin icon-12 {
+  font-size: 16px;
+}
+@mixin icon-14 {
+  font-size: 18px;
+}
+@mixin icon-16 {
+  font-size: 20px;
+}
+@mixin icon-18 {
+  font-size: 22px;
+}
+@mixin icon-24 {
+  font-size: 30px;
+}
+@mixin icon-32 {
+  font-size: 38px;
+}
+.icon-12{
+  @include icon-12;
+}
+.icon-14{
+  @include icon-14;
+}
+.icon-16{
+  @include icon-16;
+}
+.icon-18{
+  @include icon-18;
+}
+.icon-24{
+  @include icon-24;
+}
+.icon-32{
+  @include icon-32;
+}
+
