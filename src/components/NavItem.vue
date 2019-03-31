@@ -4,7 +4,8 @@
             v-if="!(navData.children && navData.children.length)">
         <span slot="title">{{navData.name}}</span>
     </el-menu-item>
-    <el-submenu :index="navData.name" v-else>
+    <el-submenu
+            :index="navData.name" v-else>
         <template slot="title">{{navData.name}}</template>
         <nav-item
                 v-for="(item, index) of navData.children"
@@ -14,15 +15,11 @@
 </template>
 
 <script>
-import NavItem from './NavItem'
 
 export default {
     name: 'NavItem',
     props: {
         navData: Object
-    },
-    components: {
-        NavItem
     },
     methods: {
     }

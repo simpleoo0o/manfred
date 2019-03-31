@@ -6,70 +6,114 @@
                     :style="configData.header.logo.style" alt="">
             <el-menu
                     class="menu-top"
+                    :style="configData.content.topMenu.style"
                     @select="topMenuItemSelect"
                     :default-active="activeTop"
                     mode="horizontal">
                 <el-menu-item
-                        v-for="(item, index) of configData.content"
+                        :style="configData.content.topMenu.itemStyle"
+                        v-for="(item, index) of configData.content.data"
                         :index="item.name"
                         :key="index + 'nav1'">{{item.name}}
                 </el-menu-item>
             </el-menu>
         </div>
-        <div class="content">
-            <div class="menu-left-container">
+        <div :style="configData.content.style" class="content">
+            <div
+                    :style="configData.content.leftMenu.containerStyle"
+                    v-if="currentData.name !== configData.content.data[0].name"
+                    class="menu-left-container">
                 <el-menu
+                        :background-color="configData.content.leftMenu.background"
+                        unique-opened
                         class="menu-left"
                         @select="leftMenuItemSelect"
-                        :default-active="activeLeft"
-                        background-color="#545c64"
-                        text-color="#fff"
-                        active-text-color="#ffd04b">
+                        :default-active="activeLeft">
                     <nav-item
-                            v-for="(item, index) of configData.content"
+                            v-for="(item, index) of configData.content.data"
                             :key="index + 'nav2'"
                             :nav-data="item"></nav-item>
                 </el-menu>
             </div>
-            <router-view/>
+            <div class="main">
+                <template-one
+                        @go="go"
+                        :templateData="currentData"
+                        v-if="currentData.template === 'template1'"></template-one>
+                <template-two
+                        :key="currentData.name"
+                        :templateData="currentData"
+                        v-if="currentData.template === 'template2'"></template-two>
+            </div>
         </div>
-        <div class="footer">
+        <div class="footer" :style="configData.footer.style">
             {{configData.footer.text}}
         </div>
-
     </div>
 </template>
 
 <script>
 import NavItem from '../components/NavItem'
+import TemplateOne from '../components/TemplateOne'
+import TemplateTwo from '../components/TemplateTwo'
 import * as _ from 'lodash'
 
 export default {
     name: 'Container',
     components: {
-        NavItem
+        NavItem,
+        TemplateOne,
+        TemplateTwo
     },
     data () {
         return {
             activeLeft: 'Startseite',
             activeTop: 'Startseite',
-            configData: window.staticConfig
+            configData: {},
+            currentData: {}
         }
     },
+    created() {
+        this.configData = _.cloneDeep(window.staticConfig)
+        this.currentData = _.cloneDeep(window.staticConfig.content.data[0])
+    },
     methods: {
+        go (data) {
+            this.activeTop = data[0]
+            this.activeLeft = data[data.length - 1]
+            let templateData = this.configData.content.data
+            for (let item of data) {
+                if (templateData.children) {
+                    templateData = templateData.children
+                }
+                templateData = _.find(templateData, (o) => {
+                    return o.name === item
+                })
+            }
+            this.currentData = templateData
+        },
         leftMenuItemSelect (index, indexArray) {
-            console.log(index, indexArray)
             this.activeLeft = index
             this.activeTop = indexArray[0]
+            let templateData = this.configData.content.data
+            for (let item of indexArray) {
+                if (templateData.children) {
+                    templateData = templateData.children
+                }
+                templateData = _.find(templateData, (o) => {
+                    return o.name === item
+                })
+            }
+            this.currentData = templateData
         },
         topMenuItemSelect (index) {
-            let data = _.cloneDeep(this.configData.content)
+            let data = _.cloneDeep(this.configData.content.data)
             let a = _.find(data, (o) => {
                 return o.name === index
             })
-            console.log(a, index)
             this.activeTop = index
             this.activeLeft = a && a.children ? a.children[0].name : index
+            this.currentData = a && a.children ? a.children[0] : a
         }
     }
 }
@@ -78,50 +122,37 @@ export default {
 <style lang="scss">
     .container{
         height: calc(100% + 50px);
-        overflow: hidden;
         .header{
             .menu-top{
-                flex-grow: 0;
-                height: auto;
-                border: none;
-                background-color: transparent;
-                align-self: flex-end;
-                cursor: pointer;
                 .el-menu-item{
-                    color: #fff;
-                    text-shadow: 0 0 15px #567ab1;
-                    border: none;
-                    font-size: 40px;
                     &.is-active, &:hover{
-                        background-color: transparent;
-                        border: none;
-                        color: #febf00;
+                        background-color: transparent!important;
+                        border: none!important;
+                        color: #febf00!important;
                     }
                 }
             }
         }
         .content{
-            margin: 16px 0;
-            height: calc(100% - 282px);
             .menu-left-container{
-                height: 100%;
-                overflow-y: auto;
-                overflow-x: hidden;
-                width: 300px;
                 .menu-left{
-                    height: 100%;
                     width: 100%;
+                    height: 100%;
+                    .el-menu-item, .el-submenu__title{
+                        font-size: 20px;
+                        color: #fff;
+                        text-shadow: 0 0 3px #4372c4;
+                        &.is-active{
+                            background: #fcaf11!important;
+                        }
+                    }
                 }
             }
+            .main{
+                min-height: 100%;
+                width: 100%;
+            }
 
-        }
-        .footer{
-            background: #2d75b6;
-            height: 50px;
-            line-height: 50px;
-            text-align: center;
-            font-size: 32px;
-            color: #fff;
         }
     }
 </style>
