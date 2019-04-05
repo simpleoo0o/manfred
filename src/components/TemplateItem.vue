@@ -1,5 +1,5 @@
 <template>
-    <div class="template-item" :title="JSON.stringify(templateData)">
+    <div class="template-item">
         <div class="blank" :style="style" v-if="templateData.type === 'blank'">
         </div>
         <div class="blank" :style="style" v-if="templateData.type === 'line'">
@@ -15,14 +15,12 @@
         </div>
         <div class="img-and-text" :style="style" v-if="templateData.type === 'imgAndText'">
             <div class="img-and-text-item"
-                 :style="templateStyle[templateData.type].itemStyle"
-                 :key="index"
-                 v-for="(item, index) of templateData.settings">
+                 :style="templateStyle[templateData.type].itemStyle">
                 <img
                         :style="templateStyle[templateData.type].imgStyle"
-                        :src="item.img"
+                        :src="templateData.img"
                         alt="">
-                <div :style="templateStyle[templateData.type].textStyle">{{item.text}}</div>
+                <div :style="templateStyle[templateData.type].textStyle">{{templateData.text}}</div>
             </div>
         </div>
         <div class="group" :style="style" v-if="templateData.type === 'group'">
@@ -30,6 +28,16 @@
                     v-for="(item, index) of templateData.settings"
                     :templateData="item"
                     :key="index"></template-item>
+        </div>
+        <a
+                :href="templateData.hyperlink"
+                class="hyperlink"
+                target="_blank"
+                v-if="templateData.type === 'hyperlink'"
+                :style="style">
+            <template-item :templateData="templateData.content"></template-item>
+        </a>
+        <div class="custom" :style="style" v-if="templateData.type === 'custom'" v-html="templateData.html">
         </div>
     </div>
 </template>

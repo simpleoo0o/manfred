@@ -121,7 +121,7 @@ export default {
 
 <style lang="scss">
     .container{
-        height: calc(100% + 50px);
+        height:100%;
         .header{
             .menu-top{
                 .el-menu-item{

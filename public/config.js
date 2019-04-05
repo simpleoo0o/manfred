@@ -1,4 +1,5 @@
 window.staticConfig = {
+    // 头部
     header: {
         style: {
             backgroundImage: 'url(./img/header-bg.png)',
@@ -17,6 +18,7 @@ window.staticConfig = {
             }
         }
     },
+    // 主体
     content: {
         data: [
             {
@@ -29,7 +31,7 @@ window.staticConfig = {
                         './img/visualstudioformacinstaller.png'
                     ]
                 },
-                template: 'template1',
+                template: 'template1', // 首页用template1，其他用template2
                 text: [
                     'Bei uns finden Sie preiswerte Werkzeuge für die Metallbearbeitung!',
                     'zum aktuellen '
@@ -39,7 +41,7 @@ window.staticConfig = {
 
             },
             {
-                name: 'Produkte',
+                name: 'Produkte', // 二级菜单写在children里面
                 children: [
                     {
                         name: 'Drehwerkzeuge',
@@ -59,24 +61,28 @@ window.staticConfig = {
                                 }
                             },
                             {
-                                type: 'imgAndText',
+                                type: 'group',
                                 settings: [
                                     {
-                                        img: './img/1.png',
-                                        text: 'Drehen_Stähle'
+                                        type: 'hyperlink',
+                                        hyperlink: 'www.google.com',
+                                        content: {
+                                            type: 'imgAndText',
+                                            img: './img/1.png',
+                                            text: 'Drehen_Stähle'
+                                        }
                                     },
                                     {
+                                        type: 'imgAndText',
                                         img: './img/1.png',
                                         text: 'Drehen_Edelstähle'
                                     },
                                     {
+                                        type: 'imgAndText',
                                         img: './img/1.png',
                                         text: 'Drehen_Grauguss'
                                     }
-                                ],
-                                style: {
-                                    marginLeft: '20px'
-                                }
+                                ]
                             },
                             {
                                 type: 'blank',
@@ -91,7 +97,7 @@ window.staticConfig = {
                                         type: 'bigBoldText',
                                         text: 'Angebot',
                                         style: {
-                                            marginLeft: '20px',
+                                            marginLeft: '20px'
                                         }
                                     },
                                     {
@@ -101,7 +107,7 @@ window.staticConfig = {
                                             marginTop: '10px',
                                             marginLeft: '16px'
                                         }
-                                    },
+                                    }
                                 ]
                             },
                             {
@@ -112,7 +118,7 @@ window.staticConfig = {
                             },
                             {
                                 type: 'bigBoldText',
-                                text: 'CNMG 12 04 08 - PM  MC4025\n',
+                                text: 'CNMG 12 04 08 - PM  MC4025',
                                 style: {
                                     marginLeft: '20px'
                                 }
@@ -130,7 +136,7 @@ window.staticConfig = {
                                         type: 'text',
                                         text: 'ab 20 Stück',
                                         style: {
-                                            marginLeft: '40px',
+                                            marginLeft: '40px'
                                         }
                                     },
                                     {
@@ -147,7 +153,7 @@ window.staticConfig = {
                                         style: {
                                             marginLeft: '3px'
                                         }
-                                    },
+                                    }
                                 ]
                             },
                             {
@@ -163,7 +169,7 @@ window.staticConfig = {
                                         type: 'text',
                                         text: 'ab 50 Stück',
                                         style: {
-                                            marginLeft: '40px',
+                                            marginLeft: '40px'
                                         }
                                     },
                                     {
@@ -180,7 +186,7 @@ window.staticConfig = {
                                         style: {
                                             marginLeft: '3px'
                                         }
-                                    },
+                                    }
                                 ]
                             },
                             {
@@ -196,7 +202,7 @@ window.staticConfig = {
                                         type: 'text',
                                         text: 'oder',
                                         style: {
-                                            marginLeft: '80px',
+                                            marginLeft: '80px'
                                         }
                                     },
                                     {
@@ -217,8 +223,7 @@ window.staticConfig = {
                             },
                             {
                                 type: 'line',
-                                style: {
-                                }
+                                style: {}
                             },
                             {
                                 type: 'blank',
@@ -257,12 +262,13 @@ window.staticConfig = {
                                 type: 'text',
                                 text: '(Bitte immer die Stückzahlen angeben)',
                                 style: {
-                                    marginLeft: '20px',
+                                    marginLeft: '20px'
                                 }
-                            },
+                            }
 
                         ]
-                    }, {
+                    },
+                    {
                         name: 'Fräswerkzeuge',
                         template: 'template2',
                         content: [
@@ -339,8 +345,7 @@ window.staticConfig = {
                             },
                             {
                                 type: 'line',
-                                style: {
-                                }
+                                style: {}
                             },
                             {
                                 type: 'blank',
@@ -381,9 +386,10 @@ window.staticConfig = {
                                 style: {
                                     marginLeft: '20px'
                                 }
-                            },
+                            }
                         ]
-                    }, {
+                    },
+                    {
                         name: 'Bohrer',
                         template: 'template2',
                         content: [
@@ -460,8 +466,7 @@ window.staticConfig = {
                             },
                             {
                                 type: 'line',
-                                style: {
-                                }
+                                style: {}
                             },
                             {
                                 type: 'blank',
@@ -502,9 +507,10 @@ window.staticConfig = {
                                 style: {
                                     marginLeft: '20px'
                                 }
-                            },
+                            }
                         ]
-                    }, {
+                    },
+                    {
                         name: 'Fräser',
                         template: 'template2',
                         content: [
@@ -581,8 +587,7 @@ window.staticConfig = {
                             },
                             {
                                 type: 'line',
-                                style: {
-                                }
+                                style: {}
                             },
                             {
                                 type: 'blank',
@@ -623,7 +628,7 @@ window.staticConfig = {
                                 style: {
                                     marginLeft: '20px'
                                 }
-                            },
+                            }
                         ]
                     }
                 ]
@@ -633,7 +638,17 @@ window.staticConfig = {
                 children: [
                     {
                         name: 'Deutschland',
-                        template: 'template2'
+                        template: 'template2',
+                        content: [
+                            {
+                                type: 'custom',
+                                html: `<div>自定义的HTML<span style="color: #0b76c1;font-size: 20px;">样例</span></div>`
+                            },
+                            {
+                                type: 'custom',
+                                html: `<a href="https://www.baidu.com/img/dong_24ac35d79990cac4c1816710e2802ca0.gif" target="_blank">demo</a>`
+                            },
+                        ]
                     }, {
                         name: 'China'
                     }
@@ -660,6 +675,7 @@ window.staticConfig = {
             display: 'flex',
             background: '#d9d9d9'
         },
+        // 头部导航的样式，导航根据上面的data自动生成
         topMenu: {
             style: {
                 flexGrow: 0,
@@ -676,6 +692,7 @@ window.staticConfig = {
                 fontSize: '40px'
             }
         },
+        // 左侧导航的样式，导航根据上面的data自动生成
         leftMenu: {
             containerStyle: {
                 minHeight: '100%',
@@ -687,7 +704,9 @@ window.staticConfig = {
         }
 
     },
+    // 模板样式
     templateStyle: {
+        // 模板1的样式
         template1: {
             style: {
                 height: 'calc(100% - 48px)',
@@ -714,6 +733,7 @@ window.staticConfig = {
                 height: '100%'
             }
         },
+        // 模板2的样式
         template2: {
             style: {
                 height: 'calc(100% - 48px)',
@@ -726,8 +746,7 @@ window.staticConfig = {
                 display: 'block'
             },
             text: {
-                style: {
-                }
+                style: {}
             },
             bigBoldText: {
                 style: {
@@ -771,9 +790,15 @@ window.staticConfig = {
                     background: 'black',
                     display: 'block'
                 }
-            }
+            },
+            hyperlink: {
+                display: 'block',
+                cursor: 'pointer'
+            },
+            custom: {}
         }
     },
+    // 底部
     footer: {
         style: {
             background: '#2d75b6',
