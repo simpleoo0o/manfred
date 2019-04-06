@@ -18,7 +18,7 @@
                 </el-menu-item>
             </el-menu>
         </div>
-        <div :style="configData.content.style" class="content">
+        <div :style="contentStyle" class="content">
             <div
                     :style="configData.content.leftMenu.containerStyle"
                     v-if="currentData.name !== configData.content.data[0].name"
@@ -70,12 +70,16 @@ export default {
             activeLeft: 'Startseite',
             activeTop: 'Startseite',
             configData: {},
-            currentData: {}
+            currentData: {},
+            contentStyle: {}
         }
     },
     created() {
         this.configData = _.cloneDeep(window.staticConfig)
         this.currentData = _.cloneDeep(window.staticConfig.content.data[0])
+        this.contentStyle = _.cloneDeep(window.staticConfig.content.style)
+        this.$set(this.contentStyle, 'height', document.body.offsetHeight - 282 + 'px')
+        console.log(document.body.offsetHeight)
     },
     methods: {
         go (data) {
@@ -120,6 +124,7 @@ export default {
 </script>
 
 <style lang="scss">
+    @import "../assets/style/common";
     .container{
         height:100%;
         .header{
@@ -135,6 +140,7 @@ export default {
         }
         .content{
             .menu-left-container{
+                min-height: inherit;
                 .menu-left{
                     width: 100%;
                     height: 100%;
@@ -151,6 +157,8 @@ export default {
             .main{
                 min-height: 100%;
                 width: 100%;
+                flex-grow: 1;
+                @include scroll;
             }
 
         }

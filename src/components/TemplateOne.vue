@@ -47,7 +47,7 @@ export default {
 <style lang="scss">
     .template-one{
         .el-carousel__container{
-            height: calc(100% - 30px);
+            flex-grow: 1;
             img{
                 height: 100%;
                 width: auto;

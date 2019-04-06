@@ -8,7 +8,7 @@ window.staticConfig = {
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
-            height: '152px'
+            height: '152px',
         },
         logo: {
             src: './img/logo.png',
@@ -65,7 +65,7 @@ window.staticConfig = {
                                 settings: [
                                     {
                                         type: 'hyperlink',
-                                        hyperlink: 'www.google.com',
+                                        hyperlink: 'http://www.google.com',
                                         content: {
                                             type: 'imgAndText',
                                             img: './img/1.png',
@@ -265,7 +265,6 @@ window.staticConfig = {
                                     marginLeft: '20px'
                                 }
                             }
-
                         ]
                     },
                     {
@@ -642,12 +641,12 @@ window.staticConfig = {
                         content: [
                             {
                                 type: 'custom',
-                                html: `<div>自定义的HTML<span style="color: #0b76c1;font-size: 20px;">样例</span></div>`
+                                html: '<div>自定义的HTML<span style="color: #0b76c1;font-size: 20px;">样例</span></div>'
                             },
                             {
                                 type: 'custom',
-                                html: `<a href="https://www.baidu.com/img/dong_24ac35d79990cac4c1816710e2802ca0.gif" target="_blank">demo</a>`
-                            },
+                                html: '<a href="https://www.baidu.com/img/dong_24ac35d79990cac4c1816710e2802ca0.gif" target="_blank">demo</a>'
+                            }
                         ]
                     }, {
                         name: 'China'
@@ -671,9 +670,9 @@ window.staticConfig = {
         ],
         style: {
             margin: '16px 0',
-            minHeight: 'calc(100% - 282px)',
             display: 'flex',
-            background: '#d9d9d9'
+            background: '#d9d9d9',
+            boxSizing: 'border-box'
         },
         // 头部导航的样式，导航根据上面的data自动生成
         topMenu: {
@@ -689,7 +688,7 @@ window.staticConfig = {
                 color: '#fff',
                 textShadow: '0 0 15px #567ab1',
                 border: 'none',
-                fontSize: '40px'
+                fontSize: '24px' // 修改头部导航字体大小
             }
         },
         // 左侧导航的样式，导航根据上面的data自动生成
@@ -709,8 +708,11 @@ window.staticConfig = {
         // 模板1的样式
         template1: {
             style: {
-                height: 'calc(100% - 48px)',
-                padding: '24px'
+                height: '100%',
+                padding: '24px 0 0',
+                display: 'flex',
+                flexDirection: 'column',
+                boxSizing: 'border-box'
             },
             text: {
                 width: '100%',
@@ -723,11 +725,12 @@ window.staticConfig = {
                 cursor: 'pointer'
             },
             carousel: {
-                height: 'calc(100% - 80px)',
-                marginTop: '24px',
+                height: '100%',
                 width: '100% ',
-                padding: '20px 0',
-                boxSizing: 'border-box'
+                padding: '44px 0 0 0',
+                boxSizing: 'border-box',
+                display: 'flex',
+                flexDirection: 'column',
             },
             carouselItem: {
                 height: '100%'
@@ -736,8 +739,9 @@ window.staticConfig = {
         // 模板2的样式
         template2: {
             style: {
-                height: 'calc(100% - 48px)',
-                padding: '24px'
+                height: '100%',
+                padding: '24px',
+                boxSizing: 'border-box'
             },
             itemStyle: {
                 marginBottom: '24px'
@@ -805,7 +809,7 @@ window.staticConfig = {
             height: '50px',
             lineHeight: '50px',
             textAlign: 'center',
-            fontSize: '28px',
+            fontSize: '18px', // 修改底部字体大小
             color: '#fff'
         },
         text: 'Manfred Metal Cutting GmbH  •  72622 Nürtingen/Germany  •  info@manfred-tools.com  •  Copyright © 2019 - Manfred, . All Rights Reserved'
