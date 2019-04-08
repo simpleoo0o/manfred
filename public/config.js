@@ -2,19 +2,20 @@ window.staticConfig = {
     // 头部
     header: {
         style: {
+            height: '200px',  // 头部的高度
             backgroundImage: 'url(./img/header-bg.png)',
             backgroundSize: '100% 100%',
             padding: '24px',
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
-            height: '152px',
+            boxSizing: 'border-box'
         },
         logo: {
             src: './img/logo.png',
             style: {
-                width: 'auto',
-                height: 'auto'
+                width: 'auto',  // logo的宽
+                height: '100%' // logo的高
             }
         }
     },
@@ -697,7 +698,7 @@ window.staticConfig = {
                 minHeight: '100%',
                 overflowY: 'auto',
                 overflowX: 'hidden',
-                width: '300px'
+                width: '300px'  // 左侧导航的宽度
             },
             background: '#2d75b6'
         }
@@ -730,7 +731,7 @@ window.staticConfig = {
                 padding: '44px 0 0 0',
                 boxSizing: 'border-box',
                 display: 'flex',
-                flexDirection: 'column',
+                flexDirection: 'column'
             },
             carouselItem: {
                 height: '100%'
@@ -805,6 +806,8 @@ window.staticConfig = {
     // 底部
     footer: {
         style: {
+            flexGrow: 0,
+            flexShrink: 0,
             background: '#2d75b6',
             height: '50px',
             lineHeight: '50px',

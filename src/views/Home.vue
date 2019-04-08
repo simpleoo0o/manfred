@@ -78,8 +78,6 @@ export default {
         this.configData = _.cloneDeep(window.staticConfig)
         this.currentData = _.cloneDeep(window.staticConfig.content.data[0])
         this.contentStyle = _.cloneDeep(window.staticConfig.content.style)
-        this.$set(this.contentStyle, 'height', document.body.offsetHeight - 282 + 'px')
-        console.log(document.body.offsetHeight)
     },
     methods: {
         go (data) {
@@ -127,7 +125,11 @@ export default {
     @import "../assets/style/common";
     .container{
         height:100%;
+        display: flex;
+        flex-direction: column;
         .header{
+            flex-grow: 0;
+            flex-shrink: 0;
             .menu-top{
                 .el-menu-item{
                     &.is-active, &:hover{
@@ -139,6 +141,7 @@ export default {
             }
         }
         .content{
+            flex-grow: 1;
             .menu-left-container{
                 min-height: inherit;
                 .menu-left{
